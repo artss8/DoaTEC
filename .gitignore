@@ -1,0 +1,7 @@
+# Senha do MySQL de cada integrante: nunca vai para o GitHub
+config.php
+
+# Imagens enviadas pelo sistema (só as regras da pasta vão)
+uploads/*
+!uploads/.htaccess
+!uploads/.gitkeep

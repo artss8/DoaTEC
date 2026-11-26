@@ -1,0 +1,182 @@
+/*
+ * DoaTEC — assets/css/estilo.css
+ * Dono: Pessoa 3 · PALETA PRONTA (carregado pelo header.php em todas as páginas)
+ *
+ * REGRA DO GRUPO: cor e fonte só existem AQUI. Nas páginas, ninguém escreve
+ * cor (hex, rgb, style="color: ...") — usa as classes do Bootstrap já
+ * ajustadas (btn-primary, bg-primary, text-primary...) ou as classes abaixo.
+ *
+ * PALETA DO FIGMA (valores tirados da tela de login; conferir no "Inspect"
+ * do Figma e, se algum mudar, trocar só aqui):
+ *
+ *   --dt-verde          #1B4A40  painel verde, botão principal, links
+ *   --dt-verde-escuro   #143A32  rodapé, hover do botão
+ *   --dt-laranja        #F2A469  destaque em títulos ("onde ajudar")
+ *   --dt-laranja-forte  #D9772B  rótulos em caixa alta ("BEM-VINDO AO DOATEC")
+ *   --dt-creme          #F5F3EE  fundo das páginas
+ *   --dt-branco         #FFFFFF  cards e campos
+ *   --dt-texto          #1F2B28  texto principal
+ *   --dt-texto-suave    #5E6B66  texto de apoio
+ *   --dt-borda          #E3E0D8  bordas e divisórias
+ *   Fonte: DM Sans (carregada no header.php)
+ *
+ * CLASSES PRÓPRIAS PARA USAR NAS PÁGINAS:
+ *   .rotulo          texto pequeno, caixa alta, laranja forte (acima de títulos)
+ *   .text-destaque   palavra em laranja dentro de um título
+ *   .painel-verde    bloco de fundo verde com texto branco (lado esquerdo do login)
+ *   .titulo-grande   título grande e fino do Figma
+ *   .card            já vem branco, com borda e cantos arredondados
+ *
+ * #ToDo
+ *    [ ] conferir os hex no Figma (Inspect) e a fonte
+ *    [ ] adicionar aqui qualquer classe nova que o Figma pedir
+ */
+
+/* 1. Paleta */
+:root {
+    --dt-verde: #1B4A40;
+    --dt-verde-escuro: #143A32;
+    --dt-laranja: #F2A469;
+    --dt-laranja-forte: #D9772B;
+    --dt-creme: #F5F3EE;
+    --dt-branco: #FFFFFF;
+    --dt-texto: #1F2B28;
+    --dt-texto-suave: #5E6B66;
+    --dt-borda: #E3E0D8;
+    --dt-raio: 10px;
+
+    /* Bootstrap passa a usar a paleta */
+    --bs-primary: #1B4A40;
+    --bs-primary-rgb: 27, 74, 64;
+    --bs-body-bg: #F5F3EE;
+    --bs-body-color: #1F2B28;
+    --bs-secondary-color: #5E6B66;
+    --bs-border-color: #E3E0D8;
+    --bs-link-color: #1B4A40;
+    --bs-link-color-rgb: 27, 74, 64;
+    --bs-link-hover-color: #143A32;
+    --bs-body-font-family: 'DM Sans', system-ui, sans-serif;
+    --bs-border-radius: 10px;
+}
+
+/* 2. Botões */
+.btn-primary {
+    --bs-btn-bg: var(--dt-verde);
+    --bs-btn-border-color: var(--dt-verde);
+    --bs-btn-hover-bg: var(--dt-verde-escuro);
+    --bs-btn-hover-border-color: var(--dt-verde-escuro);
+    --bs-btn-active-bg: var(--dt-verde-escuro);
+    --bs-btn-active-border-color: var(--dt-verde-escuro);
+    --bs-btn-disabled-bg: var(--dt-verde);
+    --bs-btn-disabled-border-color: var(--dt-verde);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--dt-verde);
+    --bs-btn-border-color: var(--dt-borda);
+    --bs-btn-bg: var(--dt-branco);
+    --bs-btn-hover-bg: var(--dt-verde);
+    --bs-btn-hover-border-color: var(--dt-verde);
+    --bs-btn-hover-color: var(--dt-branco);
+}
+
+.btn {
+    border-radius: var(--dt-raio);
+    font-weight: 600;
+}
+
+/* 3. Campos de formulário */
+.form-control,
+.form-select {
+    border-radius: var(--dt-raio);
+    border-color: var(--dt-borda);
+    padding: 0.75rem 1rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--dt-verde);
+    box-shadow: 0 0 0 0.2rem rgba(27, 74, 64, 0.15);
+}
+
+.form-label {
+    font-weight: 600;
+}
+
+/* 4. Cards */
+.card {
+    background: var(--dt-branco);
+    border-color: var(--dt-borda);
+    border-radius: 14px;
+}
+
+/* 5. Textos do Figma */
+.rotulo {
+    color: var(--dt-laranja-forte);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.text-destaque {
+    color: var(--dt-laranja);
+}
+
+.titulo-grande {
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+}
+
+.painel-verde {
+    background: var(--dt-verde);
+    color: var(--dt-branco);
+}
+
+/* 6. Topo e rodapé */
+.navbar-doatec {
+    background: var(--dt-verde);
+}
+
+.rodape-doatec {
+    background: var(--dt-verde-escuro);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.logo-doatec .tec {
+    color: var(--dt-laranja);
+}
+
+/* 7. Componentes (includes/componentes.php) */
+.img-campanha {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: var(--dt-raio);
+}
+
+.img-campanha-vazia {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dt-creme);
+    color: var(--dt-texto-suave);
+}
+
+.progress {
+    height: 1.25rem;
+    background: var(--dt-creme);
+}
+
+.progress-bar {
+    background: var(--dt-verde);
+}
+
+/* 8. Celular */
+@media (max-width: 576px) {
+    .img-campanha {
+        max-height: 200px;
+    }
+}

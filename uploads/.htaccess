@@ -1,0 +1,16 @@
+# DoaTEC — uploads/.htaccess
+# Dono: Pessoa 4 · Tipo: proteção da pasta de imagens
+#
+# 1) PROMPT PARA IA
+#    Escreva o .htaccess da pasta uploads/ do DoaTEC (Apache 2.4 do XAMPP):
+#    bloquear qualquer script (php, phtml, phar, cgi, sh) com <FilesMatch>
+#    + "Require all denied", permitir só jpg, jpeg, png e webp e desligar a
+#    listagem (Options -Indexes). Não use php_flag. Comente em português.
+#
+# 2) CONTEXTO
+#    Segunda barreira do upload: mesmo que um arquivo perigoso passasse
+#    pela validação do PHP, o Apache não o executaria aqui.
+#
+# 3) #ToDo
+#    [ ] regras do Apache
+#    [ ] testar abrir um .php colocado à mão na pasta (deve dar 403)
