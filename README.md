@@ -155,7 +155,7 @@ Fonte: **DM Sans**. Os valores ficam só em `assets/css/estilo.css` — se mudar
 
 ## ⏭️ Ordem de trabalho
 
-1. **P2 faz o `database/doatec.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
-2. P2 entrega `campanha_atual()` e P4 entrega `total_por_item()` → o painel ganha vida.
+1. **Riva faz o `database/doatec.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
+2. Riva entrega `campanha_atual()` e Rhyan entrega `total_por_item()` → o painel ganha vida.
 3. Cada um termina a própria pasta.
 4. Teste dos cobertores → prints → manual → vídeo → entrega.
