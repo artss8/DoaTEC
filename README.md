@@ -45,7 +45,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 👤 Pessoa 1 — pasta `usuarios/`
+### 👤 Enzo — pasta `usuarios/`
 
 **O que faz:** login, cadastro, troca de senha e a tela onde o admin promove alguém a Organizador ou Admin.
 
@@ -63,7 +63,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 🛠️ Pessoa 2 — pasta `admin/` + banco
+### 🛠️ Pedro Riva — pasta `admin/` + banco
 
 **O que faz:** o banco de dados e tudo o que o administrador cadastra.
 
@@ -82,7 +82,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 💚 Pessoa 3 — pasta `doador/` + visual
+### 💚 Arthur — pasta `doador/` + visual
 
 **O que faz:** tudo o que o doador vê e faz, e o visual do site.
 
@@ -99,7 +99,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 📦 Pessoa 4 — pasta `organizador/`
+### 📦 Rhyan — pasta `organizador/`
 
 **O que faz:** confirmar as entregas, a imagem da campanha e o relatório.
 
