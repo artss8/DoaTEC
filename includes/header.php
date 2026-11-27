@@ -17,7 +17,7 @@ $usuario_topo = usuario_logado();
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= e(BASE_URL) ?>/assets/css/estilo.css">
+    <link rel="stylesheet" href="<?= e(BASE_URL) ?>/assets/css/style.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
 

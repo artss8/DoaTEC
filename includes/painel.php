@@ -13,9 +13,9 @@
  *   └───────────────────────────┴──────────────────────────────────────┘
  *   Seção do perfil (cada uma na pasta do seu dono):
  *     visitante    -> nada (só os botões Entrar / Cadastrar)
- *     DOADOR       -> doador/secao_painel.php       (Pessoa 3)
- *     ORGANIZADOR  -> organizador/secao_painel.php  (Pessoa 4)
- *     ADMIN        -> admin/secao_painel.php        (Pessoa 2)
+ *     DOADOR       -> doador/secao_painel.php       (Arthur)
+ *     ORGANIZADOR  -> organizador/secao_painel.php  (Rhyan)
+ *     ADMIN        -> admin/secao_painel.php        (Riva)
  *                     + organizador/secao_painel.php (admin também confirma)
  *
  * As seções recebem pronta a variável $campanha (array ou null).
@@ -41,7 +41,7 @@ if ($perfil === null) {
     $botoes[] = botao_link('Criar conta', 'usuarios/cadastro.php', 'outline-primary');
 } elseif ($perfil === 'DOADOR') {
     if ($campanha && $campanha['status_campanha'] === 'ATIVA') {
-        $botoes[] = botao_link('Quero doar', 'doador/doar.php', 'success');
+        $botoes[] = botao_link('Quero doar', 'doador/doar.php', 'laranja');
     }
 } else { // ORGANIZADOR e ADMIN
     $botoes[] = botao_link('Relatório de arrecadação', 'organizador/relatorio.php', 'outline-primary');
@@ -64,11 +64,12 @@ if ($perfil === null) {
             <div class="card h-100">
                 <div class="card-body">
                     <?= imagem_campanha($campanha['img_campanha']) ?>
-                    <h1 class="h4 mt-3">
+                    <p class="rotulo mt-3 mb-1">Campanha</p>
+                    <h1 class="h4">
                         <?= e($campanha['titulo_campanha']) ?>
                         <?= badge_status($campanha['status_campanha']) ?>
                     </h1>
-                    <p class="text-muted"><?= e($campanha['descricao_campanha']) ?></p>
+                    <p class="texto-suave"><?= e($campanha['descricao_campanha']) ?></p>
                     <p class="mb-1"><strong>Onde entregar:</strong> <?= e($campanha['local_entrega']) ?></p>
                     <p><strong>Horário:</strong> <?= e($campanha['horario_entrega']) ?></p>
                     <div class="d-flex flex-wrap gap-2"><?= implode(' ', $botoes) ?></div>
@@ -79,14 +80,14 @@ if ($perfil === null) {
         <div class="col-lg-8">
             <div class="card h-100">
                 <div class="card-body">
-                    <h2 class="h5">O que a campanha precisa</h2>
+                    <h2 class="card-titulo">O que a campanha precisa</h2>
                     <?php if (!$itens): ?>
                         <?= aviso_vazio('Nenhum item cadastrado ainda.') ?>
                     <?php else: ?>
                         <div class="table-responsive">
-                            <table class="table align-middle">
+                            <table class="table tabela-doatec">
                                 <thead>
-                                    <tr><th>Item</th><th>Meta</th><th>Recebido</th><th>Falta</th><th style="width: 30%">Progresso</th></tr>
+                                    <tr><th>Item</th><th>Meta</th><th>Recebido</th><th>Falta</th><th class="w-25">Progresso</th></tr>
                                 </thead>
                                 <tbody>
                                     <?php foreach ($itens as $item): ?>

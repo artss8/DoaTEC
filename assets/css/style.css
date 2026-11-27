@@ -1,0 +1,544 @@
+/*
+ * DoaTEC — assets/css/style.css
+ * Dono: Arthur · PADRÕES PRONTOS (carregado pelo header.php em todas as páginas)
+ *
+ * REGRA DO GRUPO: cor, fonte, borda e sombra só existem AQUI. Nas páginas,
+    Use as classes do guia
+ * abaixo ou as do Bootstrap, que já foram ajustadas para a paleta.
+ *
+ * ============================================================================
+ * PALETA DO FIGMA
+ * ============================================================================
+ *   Verde           #1B4A40   botão principal, painel verde, links
+ *   Verde escuro    #143A32   rodapé, hover
+ *   Laranja         #F2A469   destaque em títulos
+ *   Laranja forte   #D9772B   rótulos em caixa alta
+ *   Creme           #F5F3EE   fundo
+ *   Texto           #1F2B28   texto principal
+ *   Texto suave     #5E6B66   texto de apoio
+ *   Borda           #E3E0D8   bordas e campos
+ *   (verde claro e laranja claro são tons de fundo derivados da paleta,
+ *    usados só nos badges e alertas)
+ *   Fonte: DM Sans (sujeito a mudanças pra Inter :D) 
+ *
+ * ============================================================================
+ * GUIA RÁPIDO — QUAL CLASSE USAR
+ * ============================================================================
+ *  TEXTO
+ *    <p class="rotulo">Bem-vindo ao DoaTEC</p>       rótulo laranja em caixa alta
+ *    <h1 class="titulo-grande">... <span class="text-destaque">onde ajudar.</span></h1>
+ *    <p class="texto-suave">Acesse para acompanhar a arrecadação.</p>
+ *
+ *  CABEÇALHO DE PÁGINA (toda página interna começa assim)
+ *    <div class="pagina-cabecalho">
+ *        <p class="rotulo">Administração</p>
+ *        <h1>Itens e metas</h1>
+ *        <p class="texto-suave">Campanha do Agasalho 2026</p>
+ *    </div>
+ *
+ *  BOTÕES (prefira botao_link / botao_acao de includes/componentes.php)
+ *    btn btn-primary            ação principal (verde)       ex.: Entrar, Salvar, Confirmar
+ *    btn btn-outline-primary    ação secundária (branco)     ex.: Voltar, Relatório
+ *    btn btn-laranja            chamada de destaque          ex.: Quero doar
+ *    btn btn-danger             ação destrutiva              ex.: Remover, Cancelar doação
+ *    btn btn-link               link discreto
+ *    + w-100 para ocupar a largura toda, btn-sm para tabelas
+ *
+ *  CARDS
+ *    <div class="card"><div class="card-body">
+ *        <h2 class="card-titulo">Minhas doações</h2> ...
+ *    </div></div>
+ *    .card-destaque   card com faixa verde à esquerda (resumo, totais)
+ *
+ *  TABELAS
+ *    <div class="table-responsive"><table class="table tabela-doatec"> ... </table></div>
+ *
+ *  FORMULÁRIOS
+ *    <label class="form-label">E-mail</label> <input class="form-control">
+ *    <select class="form-select">, <textarea class="form-control">
+ *    campo com botão (olho da senha): <div class="input-group campo-senha"> input + button
+ *
+ *  TELA DIVIDIDA (login e cadastro, igual ao Figma)
+ *    <div class="tela-dividida row g-0">
+ *        <div class="col-lg-6 tela-dividida-lado painel-verde d-none d-lg-flex"> ... </div>
+ *        <div class="col-lg-6 tela-dividida-lado"> <div class="tela-dividida-form"> formulário </div> </div>
+ *    </div>
+ *
+ *  STATUS: use badge_status('PENDENTE') de componentes.php (classes .status-*)
+ *  AVISOS: mensagem('...', 'success' | 'danger' | 'warning' | 'info')
+ *
+ */
+
+
+/* ==========================================================================
+   1.  Variáveis do css (sim isso existe pra vcs q nao sabem) 
+   ========================================================================== */
+:root {
+    /* Paleta */
+    --dt-verde: #1B4A40;
+    --dt-verde-escuro: #143A32;
+    --dt-laranja: #F2A469;
+    --dt-laranja-forte: #D9772B;
+    --dt-creme: #F5F3EE;
+    --dt-branco: #FFFFFF;
+    --dt-texto: #1F2B28;
+    --dt-texto-suave: #5E6B66;
+    --dt-borda: #E3E0D8;
+
+    /* Tons derivados (fundos de badge e alerta) */
+    --dt-verde-claro: #E4EDEA;
+    --dt-laranja-claro: #FBEBDD;
+    --dt-vermelho: #B3412E;
+    --dt-vermelho-claro: #F8E3DE;
+
+    /* Forma */
+    --dt-raio: 10px;
+    --dt-raio-card: 14px;
+    --dt-sombra: 0 1px 2px rgba(31, 43, 40, 0.06), 0 4px 16px rgba(31, 43, 40, 0.04);
+    --dt-foco: 0 0 0 0.2rem rgba(27, 74, 64, 0.18);
+
+    /* Bootstrap usando a paleta */
+    --bs-primary: #1B4A40;
+    --bs-primary-rgb: 27, 74, 64;
+    --bs-success: #1B4A40;
+    --bs-success-rgb: 27, 74, 64;
+    --bs-danger: #B3412E;
+    --bs-danger-rgb: 179, 65, 46;
+    --bs-body-bg: #F5F3EE;
+    --bs-body-color: #1F2B28;
+    --bs-secondary-color: #5E6B66;
+    --bs-border-color: #E3E0D8;
+    --bs-link-color: #1B4A40;
+    --bs-link-color-rgb: 27, 74, 64;
+    --bs-link-hover-color: #143A32;
+    --bs-link-hover-color-rgb: 20, 58, 50;
+    --bs-body-font-family: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --bs-body-font-size: 1rem;
+    --bs-body-line-height: 1.6;
+    --bs-border-radius: 10px;
+    --bs-border-radius-lg: 14px;
+}
+
+
+/* ==========================================================================
+   2. Base: fundo, texto, títulos e links
+   ========================================================================== */
+body {
+    background: var(--dt-creme);
+    color: var(--dt-texto);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+    color: var(--dt-texto);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h1, .h1 { font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem); }
+h2, .h2 { font-size: 1.5rem; }
+h3, .h3 { font-size: 1.25rem; }
+
+a {
+    color: var(--dt-verde);
+    font-weight: 600;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--dt-verde-escuro);
+}
+
+::selection {
+    background: var(--dt-laranja);
+    color: var(--dt-texto);
+}
+
+
+/* ==========================================================================
+   3. Textos do Figma
+   ========================================================================== */
+.rotulo {
+    color: var(--dt-laranja-forte);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.titulo-grande {
+    font-weight: 500;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+.text-destaque {
+    color: var(--dt-laranja);
+}
+
+.texto-suave,
+.text-secondary,
+.text-muted {
+    color: var(--dt-texto-suave) !important;
+}
+
+
+/* ==========================================================================
+   4. Estrutura de página
+   ========================================================================== */
+.pagina-cabecalho {
+    margin-bottom: 2rem;
+}
+
+.pagina-cabecalho h1 {
+    margin-bottom: 0.25rem;
+}
+
+.secao {
+    margin-bottom: 2.5rem;
+}
+
+.painel-verde {
+    background: var(--dt-verde);
+    color: var(--dt-branco);
+}
+
+.painel-verde h1,
+.painel-verde h2,
+.painel-verde h3 {
+    color: var(--dt-branco);
+}
+
+.painel-verde p {
+    color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* ==========================================================================
+   5. Botões
+   ========================================================================== */
+.btn {
+    --bs-btn-padding-y: 0.65rem;
+    --bs-btn-padding-x: 1.25rem;
+    --bs-btn-font-weight: 600;
+    border-radius: var(--dt-raio);
+}
+
+.btn-sm {
+    --bs-btn-padding-y: 0.35rem;
+    --bs-btn-padding-x: 0.75rem;
+    border-radius: 8px;
+}
+
+.btn:focus-visible {
+    box-shadow: var(--dt-foco);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--dt-verde);
+    --bs-btn-border-color: var(--dt-verde);
+    --bs-btn-hover-bg: var(--dt-verde-escuro);
+    --bs-btn-hover-border-color: var(--dt-verde-escuro);
+    --bs-btn-active-bg: var(--dt-verde-escuro);
+    --bs-btn-active-border-color: var(--dt-verde-escuro);
+    --bs-btn-disabled-bg: var(--dt-verde);
+    --bs-btn-disabled-border-color: var(--dt-verde);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--dt-verde);
+    --bs-btn-bg: var(--dt-branco);
+    --bs-btn-border-color: var(--dt-borda);
+    --bs-btn-hover-color: var(--dt-branco);
+    --bs-btn-hover-bg: var(--dt-verde);
+    --bs-btn-hover-border-color: var(--dt-verde);
+    --bs-btn-active-color: var(--dt-branco);
+    --bs-btn-active-bg: var(--dt-verde-escuro);
+    --bs-btn-active-border-color: var(--dt-verde-escuro);
+}
+
+.btn-laranja {
+    --bs-btn-color: var(--dt-texto);
+    --bs-btn-bg: var(--dt-laranja);
+    --bs-btn-border-color: var(--dt-laranja);
+    --bs-btn-hover-color: var(--dt-branco);
+    --bs-btn-hover-bg: var(--dt-laranja-forte);
+    --bs-btn-hover-border-color: var(--dt-laranja-forte);
+    --bs-btn-active-color: var(--dt-branco);
+    --bs-btn-active-bg: var(--dt-laranja-forte);
+    --bs-btn-active-border-color: var(--dt-laranja-forte);
+}
+
+.btn-danger {
+    --bs-btn-bg: var(--dt-vermelho);
+    --bs-btn-border-color: var(--dt-vermelho);
+    --bs-btn-hover-bg: #93331F;
+    --bs-btn-hover-border-color: #93331F;
+}
+
+/* Botões que ficam lado a lado (ações de uma linha de tabela, por exemplo) */
+.acoes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+
+/* ==========================================================================
+   6. Formulários
+   ========================================================================== */
+.form-label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.4rem;
+}
+
+.form-control,
+.form-select {
+    background-color: var(--dt-branco);
+    border: 1px solid var(--dt-borda);
+    border-radius: var(--dt-raio);
+    padding: 0.8rem 1rem;
+    color: var(--dt-texto);
+}
+
+.form-control::placeholder {
+    color: #9AA39F;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--dt-verde);
+    box-shadow: var(--dt-foco);
+}
+
+.form-text {
+    color: var(--dt-texto-suave);
+}
+
+/* Campo de senha com botão de olho grudado */
+.campo-senha .form-control {
+    border-right: 0;
+}
+
+.campo-senha .btn {
+    background: var(--dt-branco);
+    border: 1px solid var(--dt-borda);
+    border-left: 0;
+    color: var(--dt-texto-suave);
+}
+
+.campo-senha:focus-within .form-control,
+.campo-senha:focus-within .btn {
+    border-color: var(--dt-verde);
+}
+
+
+/* ==========================================================================
+   7. Cards
+   ========================================================================== */
+.card {
+    background: var(--dt-branco);
+    border: 1px solid var(--dt-borda);
+    border-radius: var(--dt-raio-card);
+    box-shadow: var(--dt-sombra);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-titulo {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.card-destaque {
+    border-left: 4px solid var(--dt-verde);
+}
+
+
+/* ==========================================================================
+   8. Tabelas
+   ========================================================================== */
+.tabela-doatec {
+    --bs-table-bg: transparent;
+    --bs-table-hover-bg: var(--dt-creme);
+    margin-bottom: 0;
+    vertical-align: middle;
+}
+
+.tabela-doatec thead th {
+    color: var(--dt-texto-suave);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--dt-borda);
+    white-space: nowrap;
+}
+
+.tabela-doatec thead th a {
+    color: inherit;
+}
+
+.tabela-doatec td {
+    border-color: var(--dt-borda);
+}
+
+.tabela-doatec tbody tr:hover {
+    background: var(--dt-creme);
+}
+
+
+/* ==========================================================================
+   9. Status (badge_status de componentes.php)
+   ========================================================================== */
+.badge {
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    padding: 0.4em 0.7em;
+    border-radius: 999px;
+    vertical-align: middle;
+}
+
+.status-pendente  { background: var(--dt-laranja-claro); color: var(--dt-laranja-forte); }
+.status-recebida  { background: var(--dt-verde-claro);   color: var(--dt-verde); }
+.status-cancelada { background: var(--dt-borda);          color: var(--dt-texto-suave); }
+.status-ativa     { background: var(--dt-verde-claro);   color: var(--dt-verde); }
+.status-pausada   { background: var(--dt-laranja-claro); color: var(--dt-laranja-forte); }
+.status-encerrada { background: var(--dt-borda);          color: var(--dt-texto-suave); }
+
+
+/* ==========================================================================
+   10. Avisos (mensagem() de seguranca.php)
+   ========================================================================== */
+.alert {
+    border-radius: var(--dt-raio);
+    border-width: 1px;
+}
+
+.alert-success { background: var(--dt-verde-claro);    border-color: #C7D9D3; color: var(--dt-verde); }
+.alert-warning { background: var(--dt-laranja-claro);  border-color: #F3D3B8; color: #8A4A17; }
+.alert-danger  { background: var(--dt-vermelho-claro); border-color: #EEC6BD; color: var(--dt-vermelho); }
+.alert-info    { background: var(--dt-branco);         border-color: var(--dt-borda); color: var(--dt-texto); }
+.alert-light   { background: var(--dt-branco);         border-color: var(--dt-borda); color: var(--dt-texto-suave); }
+
+
+/* ==========================================================================
+   11. Barra de progresso e imagem da campanha
+   ========================================================================== */
+.progress {
+    height: 1.25rem;
+    background: var(--dt-creme);
+    border-radius: 999px;
+}
+
+.progress-bar {
+    background: var(--dt-verde);
+    font-size: 0.72rem;
+    font-weight: 600;
+}
+
+.img-campanha {
+    width: 100%;
+    max-height: 320px;
+    object-fit: cover;
+    border-radius: var(--dt-raio);
+}
+
+.img-campanha-vazia {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--dt-creme);
+    border: 1px dashed var(--dt-borda);
+    color: var(--dt-texto-suave);
+}
+
+
+/* ==========================================================================
+   12. Topo e rodapé (header.php e footer.php)
+   ========================================================================== */
+.navbar-doatec {
+    background: var(--dt-verde);
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
+}
+
+.navbar-doatec .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+}
+
+.navbar-doatec .nav-link:hover {
+    color: var(--dt-branco);
+}
+
+.logo-doatec {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.logo-doatec .tec {
+    color: var(--dt-laranja);
+}
+
+.rodape-doatec {
+    background: var(--dt-verde-escuro);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* ==========================================================================
+   13. Tela dividida
+   ========================================================================== */
+.tela-dividida {
+    flex-direction: row; /* funciona mesmo se alguém usar junto com .card */
+    background: var(--dt-creme);
+    border: 1px solid var(--dt-borda);
+    border-radius: var(--dt-raio-card);
+    overflow: hidden;
+    min-height: 70vh;
+}
+
+.tela-dividida-lado {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2rem;
+}
+
+.tela-dividida .painel-verde {
+    padding: 4rem 3.5rem;
+}
+
+.tela-dividida-form {
+    width: 100%;
+    max-width: 30rem;
+    margin: 0 auto;
+}
+
+
+/* ==========================================================================
+   14. Celular pq podemos pensar no mobile :)
+   ========================================================================== */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 1.1rem;
+    }
+
+    .img-campanha {
+        max-height: 200px;
+    }
+
+    .tela-dividida-lado {
+        padding: 2rem 1rem;
+    }
+}

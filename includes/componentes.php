@@ -1,7 +1,7 @@
 <?php
 /*
  * DoaTEC — includes/componentes.php
- * Dono: Pessoa 3 · PRONTO (carregado pelo iniciar.php)
+ * Dono: Arthur · PRONTO (carregado pelo iniciar.php)
  *
  * Peças visuais que se repetem nas páginas. Cada função DEVOLVE o HTML;
  * na página, use echo:
@@ -19,7 +19,6 @@
  * outline-primary... (as do Bootstrap 5).
  *
  * #ToDo
- *    [ ] ajustar classes e cores conforme o Figma (junto com estilo.css)
  *    [ ] criar aqui qualquer peça nova que aparecer em 2 páginas ou mais
  */
 
@@ -57,18 +56,12 @@ function imagem_campanha($arquivo)
 }
 
 // Etiqueta colorida para status de doação e de campanha.
+// As cores ficam em style.css (.status-pendente, .status-recebida...).
 function badge_status($status)
 {
-    $cores = [
-        'PENDENTE'  => 'warning',
-        'RECEBIDA'  => 'success',
-        'CANCELADA' => 'secondary',
-        'ATIVA'     => 'success',
-        'PAUSADA'   => 'warning',
-        'ENCERRADA' => 'dark',
-    ];
-    $cor = $cores[$status] ?? 'secondary';
-    return '<span class="badge text-bg-' . $cor . ' status-' . e(strtolower($status)) . '">' . e($status) . '</span>';
+    $validos = ['PENDENTE', 'RECEBIDA', 'CANCELADA', 'ATIVA', 'PAUSADA', 'ENCERRADA'];
+    $classe = in_array($status, $validos, true) ? 'status-' . strtolower($status) : 'status-cancelada';
+    return '<span class="badge ' . $classe . '">' . e($status) . '</span>';
 }
 
 // Barra de progresso: recebido em relação à meta, no máximo 100%.

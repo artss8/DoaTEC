@@ -5,7 +5,7 @@
  *
  * 1) PROMPT PARA IA
  *    VISUAL (paleta do Figma, igual para todo o grupo): cores e fonte vêm
- *    SÓ de assets/css/estilo.css. Nunca escreva cor nas páginas (nada de
+ *    SÓ de assets/css/style.css. Nunca escreva cor nas páginas (nada de
  *    hex, rgb ou style="color:..."). Use: btn-primary (verde #1B4A40),
  *    btn-outline-primary, bg-primary, text-primary, .rotulo (laranja forte
  *    #D9772B, caixa alta), .text-destaque (laranja #F2A469), .painel-verde,
