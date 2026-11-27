@@ -18,7 +18,7 @@ Quem quer doar vê o que está faltando, quanto já foi recebido e onde entregar
 3. Ligue Apache e MySQL no painel do XAMPP.
 4. Abra `http://localhost/DoaTEC/`.
 
-> Instalação do banco e credencial do primeiro acesso: **a fazer (Pessoa 2 / Pessoa 1)** quando o `database/doatec.sql` existir.
+> Instalação do banco e credencial do primeiro acesso: **a fazer (Pessoa 2 / Pessoa 1)** quando o `database/DoaTEC.sql` existir.
 
 ---
 
@@ -40,7 +40,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 | `includes/header.php` / `footer.php` | Topo e rodapé iguais em todas as páginas |
 | `includes/painel.php` | Painel único: bloco da campanha igual para todos + botões e seção conforme o perfil |
 | `index.php` | Página inicial e painel de todo mundo |
-| `assets/css/estilo.css` | Paleta do Figma (cores e fonte) |
+| `assets/css/style.css` | Paleta do Figma (cores e fonte) |
 | `assets/js/app.js` | Confirmação antes de enviar formulário |
 
 ---
@@ -69,7 +69,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 | Arquivo | O que fazer |
 |---|---|
-| `database/doatec.sql` | Tabelas, a view do total e o admin inicial — **fazer primeiro, todo mundo depende disso** |
+| `database/DoaTEC.sql` | Tabelas, a view do total e o admin inicial — **fazer primeiro, todo mundo depende disso** |
 | `campanha.php` | Criar e editar campanha (título, descrição, local, horário, datas) |
 | `itens.php` | Itens e metas da campanha |
 | `secao_painel.php` | Tabela de campanhas no painel, com Editar, Itens e Pausar/Reabrir |
@@ -92,7 +92,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 | `secao_painel.php` | "Minhas doações", com botão de cancelar nas pendentes |
 | `processar_doador.php` | Recebe todos os formulários da pasta |
 | `funcoes.php` / `repository.php` | Regras / SQL |
-| `assets/css/estilo.css` e `includes/componentes.php` | Dona do visual: se alguém precisar de cor ou componente novo, pede para a P3 |
+| `assets/css/style.css` e `includes/componentes.php` | Dono do visual: se alguém precisar de cor ou componente novo, pede para o Arthur |
 
 **Também cuida de:** o manual com prints (cada pessoa manda os prints das próprias telas).
 **Pronto quando:** o doador registra e cancela só as próprias doações pendentes, e o total não muda até o organizador confirmar.
@@ -125,7 +125,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
    require __DIR__ . '/../includes/iniciar.php';
    exigir_perfil('ADMIN'); // quem pode abrir
    ```
-3. **Nunca escreva cor na página.** Use as classes do `estilo.css` (`btn-primary`, `.rotulo`, `.text-destaque`, `.painel-verde`...).
+3. **Nunca escreva cor na página.** Use as classes do `style.css` (`btn-primary`, `.rotulo`, `.text-destaque`, `.painel-verde`...).
 4. Repetiu em 2 páginas? Vira função no `includes/componentes.php`.
 5. Funções do `repository.php` começam com `repo_` (os nomes não podem se repetir entre pastas).
 6. **Só a quantidade RECEBIDA conta no total.** Ninguém soma quantidades na tela: use `total_por_item()`.
@@ -143,7 +143,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 | Texto / texto suave | `#1F2B28` / `#5E6B66` | Textos |
 | Borda | `#E3E0D8` | Bordas e campos |
 
-Fonte: **DM Sans**. Os valores ficam só em `assets/css/estilo.css` — se mudar no Figma, muda lá.
+Fonte: **DM Sans**. Os valores ficam só em `assets/css/style.css` — se mudar no Figma, muda lá.
 
 ## 🧪 Teste dos cobertores (todo mundo junto, no final)
 
@@ -155,7 +155,7 @@ Fonte: **DM Sans**. Os valores ficam só em `assets/css/estilo.css` — se mudar
 
 ## ⏭️ Ordem de trabalho
 
-1. **Riva faz o `database/doatec.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
+1. **Riva faz o `database/DoaTEC.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
 2. Riva entrega `campanha_atual()` e Rhyan entrega `total_por_item()` → o painel ganha vida.
 3. Cada um termina a própria pasta.
 4. Teste dos cobertores → prints → manual → vídeo → entrega.
