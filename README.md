@@ -45,7 +45,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 👤 Pessoa 1 — pasta `usuarios/`
+### 👤 Enzo — pasta `usuarios/`
 
 **O que faz:** login, cadastro, troca de senha e a tela onde o admin promove alguém a Organizador ou Admin.
 
@@ -63,7 +63,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 🛠️ Pessoa 2 — pasta `admin/` + banco
+### 🛠️ Pedro Riva — pasta `admin/` + banco
 
 **O que faz:** o banco de dados e tudo o que o administrador cadastra.
 
@@ -82,7 +82,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 💚 Pessoa 3 — pasta `doador/` + visual
+### 💚 Arthur — pasta `doador/` + visual
 
 **O que faz:** tudo o que o doador vê e faz, e o visual do site.
 
@@ -99,7 +99,7 @@ Cada pessoa mexe **só na sua pasta**. Todo arquivo já vem com três partes nos
 
 ---
 
-### 📦 Pessoa 4 — pasta `organizador/`
+### 📦 Rhyan — pasta `organizador/`
 
 **O que faz:** confirmar as entregas, a imagem da campanha e o relatório.
 
@@ -155,7 +155,7 @@ Fonte: **DM Sans**. Os valores ficam só em `assets/css/estilo.css` — se mudar
 
 ## ⏭️ Ordem de trabalho
 
-1. **P2 faz o `database/doatec.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
-2. P2 entrega `campanha_atual()` e P4 entrega `total_por_item()` → o painel ganha vida.
+1. **Riva faz o `database/doatec.sql` primeiro.** Enquanto isso, os outros montam o HTML das telas.
+2. Riva entrega `campanha_atual()` e Rhyan entrega `total_por_item()` → o painel ganha vida.
 3. Cada um termina a própria pasta.
 4. Teste dos cobertores → prints → manual → vídeo → entrega.
